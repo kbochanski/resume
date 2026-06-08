@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kyle Bochanski - Data Scientist, Analytics Engineer, and Data Engineer.">
+  <title>Kyle Bochanski | Data Scientist</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #18212f;
+      --muted: #5b6778;
+      --soft: #eef2f5;
+      --paper: #fbfaf7;
+      --accent: #0f766e;
+      --accent-strong: #134e4a;
+      --line: #d8dee6;
+      --tag: #e8f3f1;
+      --tag-text: #174f4a;
+      --shadow: 0 18px 50px rgba(24, 33, 47, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(15, 118, 110, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(15, 118, 110, 0.06) 1px, transparent 1px),
+        var(--paper);
+      background-size: 44px 44px;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.58;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration-color: rgba(15, 118, 110, 0.32);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration-color: currentColor;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    .shell {
+      overflow: hidden;
+      border: 1px solid rgba(216, 222, 230, 0.86);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+      padding: 44px 48px 38px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.11), transparent 42%),
+        #ffffff;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent-strong);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      font-weight: 850;
+    }
+
+    .title {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+      font-weight: 650;
+    }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 230px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(251, 250, 247, 0.78);
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 0;
+    }
+
+    .content,
+    aside {
+      padding: 42px 48px;
+    }
+
+    .content {
+      border-right: 1px solid var(--line);
+    }
+
+    .summary {
+      margin: 0 0 36px;
+      color: #2d3748;
+      font-size: 1.08rem;
+    }
+
+    section + section {
+      margin-top: 44px;
+    }
+
+    h2 {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+      color: var(--accent-strong);
+      font-size: 0.92rem;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .expertise-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .expertise-group {
+      padding-bottom: 6px;
+    }
+
+    .expertise-group + .expertise-group {
+      padding-top: 20px;
+      border-top: 1px solid var(--soft);
+    }
+
+    .expertise-group h3 {
+      margin-bottom: 12px;
+      font-size: 1.18rem;
+    }
+
+    .capability {
+      margin: 0 0 14px;
+    }
+
+    .capability:last-child {
+      margin-bottom: 0;
+    }
+
+    .capability strong {
+      color: var(--ink);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 30px;
+    }
+
+    .role {
+      position: relative;
+      padding-left: 24px;
+      border-left: 2px solid var(--line);
+    }
+
+    .role::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 3px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #ffffff;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .role-heading {
+      display: grid;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .role-title {
+      font-size: 1.12rem;
+      font-weight: 820;
+    }
+
+    .org {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 1.18rem;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    aside {
+      background: rgba(248, 250, 252, 0.86);
+    }
+
+    .side-section + .side-section {
+      margin-top: 34px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      margin: 0;
+      padding: 6px 10px;
+      border: 1px solid rgba(15, 118, 110, 0.2);
+      border-radius: 999px;
+      background: var(--tag);
+      color: var(--tag-text);
+      font-size: 0.86rem;
+      font-weight: 760;
+      line-height: 1.2;
+    }
+
+    .favorite-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .favorite-list h3 {
+      margin-bottom: 9px;
+      font-size: 0.98rem;
+    }
+
+    .education-item + .education-item {
+      margin-top: 26px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .degree {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      font-weight: 820;
+      line-height: 1.3;
+    }
+
+    .school {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .education-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 880px) {
+      .page {
+        width: min(100% - 20px, 720px);
+        padding: 10px 0 32px;
+      }
+
+      header,
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      header,
+      .content,
+      aside {
+        padding: 30px 24px;
+      }
+
+      .contact {
+        min-width: 0;
+      }
+
+      .content {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        background-size: 32px 32px;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .shell {
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      header,
+      .content,
+      aside {
+        padding: 26px 18px;
+      }
+
+      h1 {
+        font-size: 2.45rem;
+      }
+
+      .role {
+        padding-left: 18px;
+      }
+    }
+
+    @media print {
+      :root {
+        --ink: #111827;
+        --muted: #374151;
+        --accent: #111827;
+        --accent-strong: #111827;
+        --line: #cfd6df;
+      }
+
+      body {
+        background: #ffffff;
+        font-size: 10.5pt;
+        line-height: 1.42;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .shell {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      header {
+        grid-template-columns: 1fr auto;
+        padding: 0 0 18px;
+        background: #ffffff;
+      }
+
+      h1 {
+        font-size: 32pt;
+      }
+
+      .title {
+        font-size: 12pt;
+      }
+
+      .contact {
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .content,
+      aside {
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+
+      section + section,
+      .side-section + .side-section {
+        margin-top: 20px;
+      }
+
+      .summary {
+        margin-bottom: 18px;
+        font-size: 10.5pt;
+      }
+
+      h2 {
+        margin-bottom: 8px;
+        font-size: 9pt;
+      }
+
+      .timeline {
+        gap: 16px;
+      }
+
+      .role {
+        break-inside: avoid;
+      }
+
+      .tags li {
+        border: 0;
+        padding: 0;
+        background: transparent;
+      }
+
+      .tags li::after {
+        content: ",";
+      }
+
+      .tags li:last-child::after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div>
+          <p class="eyebrow">Data Scientist | Analytics Engineer | Data Engineer</p>
+          <h1>Kyle Bochanski</h1>
+          <p class="title">End-to-end data platforms, scientific analytics, and decision-ready modeling.</p>
+        </div>
+        <address class="contact" aria-label="Contact information">
+          <a href="mailto:kbochansk@gmail.com">kbochansk@gmail.com</a>
+          <a href="https://www.developyourdatasense.com/">developyourdatasense.com</a>
+        </address>
+      </header>
+
+      <main>
+        <div class="content">
+          <p class="summary">
+            With over 8 years of experience in projects ranging from DevOps, data engineering, analytics
+            engineering, and data science and analytics, I specialize in designing and delivering end-to-end
+            data-driven solutions using Python, SQL, and TypeScript. From platform to analytics, I am practiced
+            in ensuring availability of quality data tables and the methodologies, experimental and observational,
+            that are unique to analysis of this data.
+          </p>
+
+          <section aria-labelledby="expertise-heading">
+            <h2 id="expertise-heading">Key Skills &amp; Expertise</h2>
+            <div class="expertise-grid">
+              <div class="expertise-group">
+                <h3>Driving Business Outcomes with Data</h3>
+                <p class="capability">
+                  <strong>Experiment Analysis.</strong> With DataSense LLC clients, I build semantic data models
+                  of their business. Then I pair frequentist and Bayesian modeling techniques to give clients
+                  coefficient estimations that are accepted in industry and academia, as well as estimate
+                  distributions that are often more useful in practical decision making.
+                </p>
+                <p class="capability">
+                  <strong>Mechanistic Modeling.</strong> At Plenty, I built models using known biological patterns.
+                  Growth curves to forecast plant yield as a function of time helped terminate trials that were not
+                  on the projected curve. Light curves to find optimal protein fluorescence for plant yield were used
+                  to make inference about maximum intensity settings. Charting optimal vapor pressure as a function
+                  of grow system settings let the engineering team ensure the environment was optimal for plant growth.
+                </p>
+                <p class="capability">
+                  <strong>Predictive Modeling.</strong> Used extreme gradient boosting models to predict product
+                  yields using environmental features and suggest correlations in complex environments. Top features
+                  driving model performance were used for planning research.
+                </p>
+                <p class="capability">
+                  <strong>Custom Analytics and Analytics Dashboards.</strong> Developed interactive Streamlit apps
+                  and integrated BI tools like Lightdash on dbt models to provide stakeholders with self-guided data
+                  insights. Powered by dbt, a small team of one to two data folks could democratize data access for
+                  scientists. Complex analytics like plant growth models were presented to scientists through this
+                  visualization layer to inform decisions about which plants to use in grow systems.
+                </p>
+              </div>
+
+              <div class="expertise-group">
+                <h3>Building Robust Data Platforms</h3>
+                <p class="capability">
+                  <strong>Cloud Infrastructure &amp; DevOps.</strong> Deployed applications using Docker, Kubernetes,
+                  ArgoCD, and AWS. This allowed Plenty to take advantage of open source tools and reduce licensing
+                  costs.
+                </p>
+                <p class="capability">
+                  <strong>ELT Development.</strong> Built custom data replication pipelines using Airflow and Airbyte,
+                  streamlining data integration from novel sources to data warehouse Snowflake. This allowed Plenty
+                  to join batch and streaming data for improved feature engineering, ML model performance, and more
+                  comprehensive dashboards.
+                </p>
+                <p class="capability">
+                  <strong>Data Transformation and Quality Control.</strong> Unified data sources and implemented
+                  business logic using the dbt framework to create data models for analytics. A GitOps approach to
+                  data management meant a small team could support the entire company using a hub-and-spokes model
+                  for data access.
+                </p>
+                <p class="capability">
+                  <strong>Automated Deployments.</strong> Configured CI/CD pipelines using CircleCI and GitHub Actions.
+                  This reduced developer overhead by completing deployments, testing, and builds automatically.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Professional Experience</h2>
+            <div class="timeline">
+              <article class="role">
+                <div class="role-heading">
+                  <span class="role-title">Founder and Data Analytics Consultant</span>
+                  <span class="org">DataSense LLC | Dec. 2024 - Present</span>
+                </div>
+                <ul>
+                  <li>Complete data modeling, exploration, and statistical modeling in an iterative fashion to answer client questions on a continuing basis.</li>
+                  <li>Built software platform for serving data insights with secure access to clients.</li>
+                </ul>
+              </article>
+
+              <article class="role">
+                <div class="role-heading">
+                  <span class="role-title">Data Scientist</span>
+                  <span class="org">Plenty | Oct. 2020 - Nov. 2024</span>
+                </div>
+                <ul>
+                  <li>Built predictive models of yield. Using scikit-learn, ML pipelines were built to predict product yield as a function of environmental parameters. Correlations were used to suggest future research with the aim of teasing out causal relationships.</li>
+                  <li>Collaborated with stakeholders on mechanistic models, including sigmoid function fits to actual yields for suggesting future yields and terminating unpromising and costly trials.</li>
+                  <li>Developed a data access platform in Streamlit. Enabled developers to add parameterized queries and visuals on top of the data warehouse, giving scientists an intuitive and customizable UI for exploring data and making data-driven cultivar decisions.</li>
+                  <li>Designed and deployed ELT pipelines via Airbyte to process raw data from multiple sources and integrate them into Snowflake for easier analytics and modeling, including integrations for custom APIs with no pre-existing connectors.</li>
+                  <li>Spearheaded development of a data validation package for the Perception team's Kinesis pipeline, ensuring consistency and reliability as new metrics were developed.</li>
+                  <li>Led BI tool integration and configuration for Lightdash to give scientists a tool for self-guided data exploration and reduce demand on a small data team.</li>
+                </ul>
+              </article>
+
+              <article class="role">
+                <div class="role-heading">
+                  <span class="role-title">Data Analyst</span>
+                  <span class="org">Plenty | Nov. 2019 - Oct. 2020</span>
+                </div>
+                <ul>
+                  <li>Transformed large-scale datasets using dbt to create data models representing business entities and improve decision-making capabilities across teams. By unifying disparate datasets, scientists were able to gather insights from data collected on disparate operational processes.</li>
+                  <li>Completed hypothesis testing for scientific teams using R and Python, generating insights to inform research on plant growth and product optimization. This included helping scientists distinguish whether treatments for yield and quality optimization showed a probable difference.</li>
+                </ul>
+              </article>
+
+              <article class="role">
+                <div class="role-heading">
+                  <span class="role-title">Data Associate</span>
+                  <span class="org">Plenty | Jun. 2018 - Nov. 2019</span>
+                </div>
+                <ul>
+                  <li>Completed descriptive statistics for internal science team experiments, enabling precise projections of farm product capabilities so the company could provide appropriate design constraints to engineers.</li>
+                  <li>Focused on scalability and reusability of data workflows for the growing company, including a Python package that unioned hundreds of spreadsheets to tables in Snowflake by querying Google APIs on a schedule using Airflow. This saved the company $100k+ that would have needed to be spent on a Lab Information Management System.</li>
+                  <li>Managed projects and tasks using Atlassian systems, ensuring timely delivery of insights and analytics.</li>
+                  <li>Documented all projects in detail during data stack design and development, preventing valuable company knowledge from being lost as processes changed and people transitioned.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <aside aria-label="Additional resume details">
+          <section class="side-section" aria-labelledby="favorites-heading">
+            <h2 id="favorites-heading">Favorites</h2>
+            <div class="favorite-list">
+              <div>
+                <h3>Languages</h3>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>SQL</li>
+                  <li>TypeScript</li>
+                  <li>HCL</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Libraries &amp; Frameworks</h3>
+                <ul class="tags">
+                  <li>pandas</li>
+                  <li>statsmodels</li>
+                  <li>PyMC3</li>
+                  <li>dbt</li>
+                  <li>FastAPI</li>
+                  <li>Next.js</li>
+                  <li>Terraform</li>
+                  <li>Terragrunt</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Platforms</h3>
+                <ul class="tags">
+                  <li>AWS</li>
+                  <li>GCP</li>
+                  <li>Snowflake</li>
+                  <li>GitHub</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="side-section" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+            <article class="education-item">
+              <p class="degree">Master of Science, Exercise Physiology</p>
+              <p class="school">University of Wyoming | 2017</p>
+              <p>Designed research project studying the effect of physical exertion on the human nasal microbiome, using 16S rRNA sequencing and enzyme-linked immunosorbent assays.</p>
+              <p>Completed analysis using Quantitative Insights into Microbial Ecology for high-throughput community sequencing analysis and SPSS for means comparisons between research groups.</p>
+            </article>
+
+            <article class="education-item">
+              <p class="degree">Bachelor of Science, Microbiology &amp; Environment &amp; Natural Resources</p>
+              <p class="school">University of Wyoming Honors Program | 2010</p>
+              <p>Completed advanced coursework in biochemistry, organic chemistry, and environmental sciences, with a focus on risk analysis modeling and environmental justice.</p>
+            </article>
+          </section>
+        </aside>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
